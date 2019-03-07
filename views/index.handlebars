@@ -1,0 +1,63 @@
+<center style="font-size:x-large">Eat those burgers!</center>
+<center style="font-size:medium">Order any type of burger</center>
+
+
+
+<center><img src="../public/assets/img/patty.jpeg"></center>
+
+
+
+
+
+      <div style="position:relative; width:250px; height:auto; background-color:grey;left:-300px"class="container">
+        <h3>Eat Da Burgers</h3>
+        <div class="row">
+          <div class="col">
+            
+      {{#each burgers}} {{#unless devoured}}
+              
+                 <span>{{this.id}} </span>
+                 <span>{{this.burger_name}}</span>
+              
+                    <form style="display:inline-block; padding:8px;"action="/api/burgers/{{this.id}}?_method= PUT" method="POST">
+                 <button id="devourBtn" data-id="{{id}}" data-devoured="{{true}}" type="submit">Devour
+                            It!</button>
+                           
+                            </form>
+            </div>  
+            
+            <div style=""class="col">
+           
+          {{/unless}} {{/each}}
+            </div>
+        </div>      
+      </div>
+                          
+          
+      
+      
+      <div style="position:relative; width:250px; height:auto; background-color:lightseagreen;right:-300px;top:-175px;" class="container">
+        <div class="row">
+          <div class="col">
+        <h3>Burgers Eaten</h3>
+        {{#each burgers}}  {{#if devoured}}
+        <section>
+          {{this.id}}
+         {{this.burger_name}}
+        {{/if}}  {{/each}}
+          </div>
+        </div>
+      </div>
+      
+
+
+<center>
+<form style="position:relative;" class="create-form">
+
+  <div class="form-group">
+    <label for="burger">Order a burger</label>
+    <input type="text" id="burgertext" name="burger">
+  </div>
+  <button id="submitBtn"type="submit">Add Burger</button>
+</form>
+</center>
